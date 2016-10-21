@@ -1,10 +1,7 @@
 package com.hpcrusher.securitycraft;
 
-import com.hpcrusher.securitycraft.handler.ConfigurationHandler;
-import com.hpcrusher.securitycraft.init.ModItems;
 import com.hpcrusher.securitycraft.proxy.Proxy;
 import com.hpcrusher.securitycraft.reference.Reference;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -20,15 +17,12 @@ public class SecurityCraft {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        ConfigurationHandler.init(event.getSuggestedConfigurationFile());
-        FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
-
-        ModItems.init();
+        proxy.onPreInit(event);
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-
+        proxy.onInit(event);
     }
 
     @EventHandler
